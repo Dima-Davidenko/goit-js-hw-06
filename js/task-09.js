@@ -11,7 +11,7 @@ const button = document.querySelector(".change-color");
 button.addEventListener("click", changeBodyColor);
 
 // Callback function. Change body color
-function changeBodyColor(event) {
+function changeBodyColor() {
   // Get new color
   const newColor = getRandomHexColor();
 
