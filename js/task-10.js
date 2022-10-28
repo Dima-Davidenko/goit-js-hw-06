@@ -1,7 +1,3 @@
-function getRandomHexColor() {
-  return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
-}
-
 // Get elements
 const controlsDiv = document.querySelector("#controls");
 const input = controlsDiv.querySelector('input[type="number"]');
@@ -33,7 +29,7 @@ function newBoxes() {
 function createBoxes(amount) {
   let markup = "";
   let size = 30;
-  for (let i = 0; i <= amount; i += 1) {
+  for (let i = 0; i < amount; i++) {
     markup += `<div style="width: ${size}px; height: ${size}px; margin: 10px auto; background-color: ${getRandomHexColor()}"></div>`;
     size += 10;
   }
@@ -43,4 +39,10 @@ function createBoxes(amount) {
 // Function clear boxesDiv
 function destroyBoxes() {
   boxesDiv.innerHTML = "";
+}
+
+function getRandomHexColor() {
+  return `#${Math.floor(Math.random() * 16777215)
+    .toString(16)
+    .padStart(6, "0")}`;
 }

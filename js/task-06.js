@@ -8,7 +8,7 @@ input.addEventListener("blur", checkInputValue);
 function checkInputValue(event) {
   const inputValue = event.currentTarget.value;
   const valueLength = event.currentTarget.dataset.length;
-  if (inputValue.length !== Number.parseInt(valueLength)) {
+  if (inputValue.length !== +valueLength) {
     setInvalidClass(event.currentTarget);
   } else {
     setValidClass(event.currentTarget);

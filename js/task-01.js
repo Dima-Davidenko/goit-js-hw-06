@@ -2,11 +2,11 @@ const getNode = (selector) => {
   return document.querySelector(selector);
 };
 
-const createNodesListInNode = (node, selector) => {
+const getNodesListInNode = (node, selector) => {
   return node.querySelectorAll(selector);
 };
 
-const outputLiContent = (itemsList) => {
+const showCategories = (itemsList) => {
   itemsList.forEach((li) => {
     console.log("Category: " + li.querySelector("h2").textContent);
     console.log("Elements: ", li.querySelectorAll("li").length);
@@ -14,10 +14,10 @@ const outputLiContent = (itemsList) => {
   });
 };
 
-const ulNode = getNode("#categories");
-const liInUl = createNodesListInNode(ulNode, "li.item");
+const list = getNode("#categories");
+const items = getNodesListInNode(list, "li.item");
 
-console.log("Number of categories: ", liInUl.length);
+console.log("Number of categories: ", items.length);
 console.log("");
 
-outputLiContent(liInUl);
+showCategories(items);

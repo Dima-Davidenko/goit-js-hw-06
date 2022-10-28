@@ -1,4 +1,4 @@
-// Get elements
+// Get gorm
 const form = document.querySelector(".login-form");
 
 // Set event listener
@@ -6,30 +6,30 @@ form.addEventListener("submit", formProcessing);
 
 // Callback to handle submit form event
 function formProcessing(event) {
-  // Destructuring variable names out of form object
-  const {
-    elements: {
-      email: { name: emailName, value: emailValue },
-      password: { name: pwdName, value: pwdValue },
-    },
-  } = event.currentTarget;
-
   // Prevent default action (page reloading)
   event.preventDefault();
 
-  // Check that all form fields are filled out
-  if (emailValue === "" || pwdValue === "") {
-    // If not - display a message
-    alert("Please note that all fields in the form must be completed.");
-  } else {
-    // If true - create an object with the appropriate properties and values
-    const formValues = {
-      [emailName]: emailValue,
-      [pwdName]: pwdValue,
-    };
-    console.log(formValues);
+  // Destructuring elements array out of form object
+  const { elements } = event.currentTarget;
 
-    // Clear form fields
-    event.currentTarget.reset;
+  // Get input's names
+  const inputsNames = [];
+  for (let i = 0; i < elements.length; i++) {
+    if (elements[i].name) inputsNames.push(elements[i].name);
   }
+
+  //Check if the field is empty and create output object
+  const formValues = {};
+  for (const inputName of inputsNames) {
+    if (elements[inputName].value === "") {
+      alert("Please note that all fields in the form must be completed.");
+      return;
+    }
+    formValues[inputName] = elements[inputName].value;
+  }
+
+  console.log(formValues);
+
+  // Clear form fields
+  event.currentTarget.reset();
 }

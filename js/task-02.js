@@ -7,11 +7,11 @@ const ingredients = [
   "Condiments",
 ];
 
-const createIndgridientList = (ingredients) => {
+const createListOfIndgredients = (ingredients) => {
   const nodesList = [];
-  ingredients.forEach((ingridient) => {
+  ingredients.forEach((ingredient) => {
     const element = document.createElement("li");
-    element.textContent = ingridient;
+    element.textContent = ingredient;
     element.classList.add("item");
     nodesList.push(element);
   });
@@ -19,6 +19,6 @@ const createIndgridientList = (ingredients) => {
 };
 const list = document.querySelector("#ingredients");
 
-const ingridientsList = createIndgridientList(ingredients);
+const listOfIngredients = createListOfIndgredients(ingredients);
 
-list.append(...ingridientsList);
+list.append(...listOfIngredients);
